@@ -23,8 +23,11 @@ public:
 
 	Smart_array(const Smart_array& other)
 	{
-		std::cout << "Copies constructor called\n"; this->Size = other.Size;
+		std::cout << "Copies constructor called\n";
+		this->Size = other.Size;
+		this->count = other.count;
 		this->data = new int[other.Size];
+		
 		for (int i = 0; i < other.Size; i++)
 		{
 			this->data[i] = other.data[i];
@@ -92,7 +95,7 @@ public:
 
 	int get_element_from_index(int y)
 	{
-		if (y >= 0 && y < Size)
+		if (y >= 0 && y < count)
 		{
 			std::cout << "Вот значение элемента массива соответствующим индексом" << std::endl;
 			return data[y];
@@ -107,7 +110,7 @@ public:
 	{
 		std::cout << "Вызвался оператор присваивания" << std::endl;
 		// случай, если массив, в который нужно копировать, меньше, чем изначальный массив.
-		// То есть new_array (это массив, из которого мы копируем, больше, чем arr.
+		// То есть new_array (это массив, из которого мы копируем), больше, чем arr.
 		// Например, массив new_array состоит из трёх элементов, а массив arr из двух элементов.
 		
 		// сначала освобождаем память в массиве данных объекта arr, потом меняем значения полей объекта
@@ -171,7 +174,7 @@ int main()
 
 		std::cout << "Smart_array printed\n";
 		
-		arr = arr;
+		new_array = arr;
 		std::cout << "Массив значений" << std::endl;
 		arr.print_arr();
 
